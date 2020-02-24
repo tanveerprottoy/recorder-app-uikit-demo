@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  RecorderAppUIKitDemo
 //
 //  Created by Tanveer Prottoy on 23/2/20.
@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
+    private var audioUtils: AudioUtils!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad called")
         stopButton?.isEnabled = false
-        // Do any additional setup after loading the view.
+        audioUtils = AudioUtils()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,17 +42,27 @@ class ViewController: UIViewController {
         print("viewDidDisappear called")
     }
     
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("Finished recording")
+        if flag {
+            performSegue(withIdentifier: "detailSegue", sender: audioUtils.getFileUrl())
+        }
+        else {
+            print("Recording failed")
+        }
+    }
+    
     @IBAction func onStartRecord(_ sender: UIButton) {
         statusLabel?.text = "Recording..."
         startButton.isEnabled = false
         stopButton.isEnabled = true
+        audioUtils.startRecord(delegate: self)
     }
-    
     
     @IBAction func onStopRecord(_ sender: UIButton) {
         statusLabel?.text = "Tap to start record..."
         stopButton.isEnabled = false
         startButton.isEnabled = true
+        audioUtils.stopRecord()
     }
 }
-
