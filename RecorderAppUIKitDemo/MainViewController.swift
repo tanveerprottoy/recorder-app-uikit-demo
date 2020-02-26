@@ -13,13 +13,11 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
-    private var audioUtils: AudioUtils!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad called")
         stopButton?.isEnabled = false
-        audioUtils = AudioUtils()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,27 +40,34 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
         print("viewDidDisappear called")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "previewSegue" {
+            let previewViewController = segue.destination as! PreviewViewController
+            previewViewController.recordedAudioUrl = sender as! URL
+        }
+    }
+    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("Finished recording")
         if flag {
-            performSegue(withIdentifier: "detailSegue", sender: audioUtils.getFileUrl())
+            performSegue(withIdentifier: "previewSegue", sender: AudioUtils.getFileUrl())
         }
         else {
             print("Recording failed")
         }
     }
     
-    @IBAction func onStartRecord(_ sender: UIButton) {
+    @IBAction func startRecord(_ sender: UIButton) {
         statusLabel?.text = "Recording..."
         startButton.isEnabled = false
         stopButton.isEnabled = true
-        audioUtils.startRecord(delegate: self)
+        AudioUtils.startRecord(delegate: self)
     }
     
-    @IBAction func onStopRecord(_ sender: UIButton) {
+    @IBAction func stopRecord(_ sender: UIButton) {
         statusLabel?.text = "Tap to start record..."
         stopButton.isEnabled = false
         startButton.isEnabled = true
-        audioUtils.stopRecord()
+        AudioUtils.stopRecord()
     }
 }

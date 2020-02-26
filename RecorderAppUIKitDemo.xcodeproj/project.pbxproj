@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C12064F2405700C00F99807 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C12064E2405700C00F99807 /* PreviewViewController.swift */; };
+		1C1206512405A4E500F99807 /* PreviewViewController+AVAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1206502405A4E500F99807 /* PreviewViewController+AVAudioPlayer.swift */; };
 		1C50B7202401AD9C00BAC5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50B71F2401AD9C00BAC5FD /* AppDelegate.swift */; };
 		1C50B7222401AD9C00BAC5FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50B7212401AD9C00BAC5FD /* SceneDelegate.swift */; };
 		1C50B7242401AD9C00BAC5FD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50B7232401AD9C00BAC5FD /* MainViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C12064E2405700C00F99807 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		1C1206502405A4E500F99807 /* PreviewViewController+AVAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewViewController+AVAudioPlayer.swift"; sourceTree = "<group>"; };
 		1C50B71C2401AD9C00BAC5FD /* RecorderAppUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecorderAppUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C50B71F2401AD9C00BAC5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C50B7212401AD9C00BAC5FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				1C50B72A2401AD9E00BAC5FD /* LaunchScreen.storyboard */,
 				1C50B72D2401AD9E00BAC5FD /* Info.plist */,
 				1CE3FCF32404488A00DA42DC /* AudioUtils.swift */,
+				1C12064E2405700C00F99807 /* PreviewViewController.swift */,
+				1C1206502405A4E500F99807 /* PreviewViewController+AVAudioPlayer.swift */,
 			);
 			path = RecorderAppUIKitDemo;
 			sourceTree = "<group>";
@@ -141,9 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1206512405A4E500F99807 /* PreviewViewController+AVAudioPlayer.swift in Sources */,
 				1C50B7242401AD9C00BAC5FD /* MainViewController.swift in Sources */,
 				1C50B7202401AD9C00BAC5FD /* AppDelegate.swift in Sources */,
 				1CE3FCF42404488A00DA42DC /* AudioUtils.swift in Sources */,
+				1C12064F2405700C00F99807 /* PreviewViewController.swift in Sources */,
 				1C50B7222401AD9C00BAC5FD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

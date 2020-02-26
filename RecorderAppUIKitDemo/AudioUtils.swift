@@ -8,10 +8,10 @@
 
 import AVFoundation
 
-class AudioUtils {
-    var audioRecorder: AVAudioRecorder!
+struct AudioUtils {
+    static var audioRecorder: AVAudioRecorder!
     
-    func startRecord(delegate: AVAudioRecorderDelegate) {
+    static func startRecord(delegate: AVAudioRecorderDelegate) {
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
         let pathArray = [dirPath, recordingName]
@@ -24,18 +24,18 @@ class AudioUtils {
             options: AVAudioSession.CategoryOptions.defaultToSpeaker
         )
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])  // [:] = empty dictionary
-        audioRecorder.delegate = delegate
-        audioRecorder.isMeteringEnabled = true
-        audioRecorder.prepareToRecord()
-        audioRecorder.record()
+        audioRecorder!.delegate = delegate
+        audioRecorder!.isMeteringEnabled = true
+        audioRecorder!.prepareToRecord()
+        audioRecorder!.record()
     }
     
-    func stopRecord() {
-        audioRecorder.stop()
+    static func stopRecord() {
+        audioRecorder!.stop()
         try! AVAudioSession.sharedInstance().setActive(false)
     }
     
-    func getFileUrl() -> URL {
-        return audioRecorder.url
+    static func getFileUrl() -> URL {
+        return audioRecorder!.url
     }
 }
